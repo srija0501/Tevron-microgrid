@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import DashboardPage from "./components/DashboardPage";
+import StoragePage from "./components/Storage";
+import AlertsPage from "./components/AlertsPage";
+import Navbar from "./components/Navbar";
+
+import "./i18n";
 
 function App() {
+  const [page, setPage] = useState("dashboard");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="min-h-screen flex flex-col bg-gray-100">
+      {/* Navbar */}
+      <Navbar setPage={setPage} />
+
+      {/* Main Content */}
+      <div className="flex-1 p-6">
+        {page === "dashboard" && <DashboardPage />}
+        {page === "alerts" && <AlertsPage />}
+      </div>
     </div>
   );
 }

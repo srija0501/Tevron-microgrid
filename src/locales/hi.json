@@ -1,0 +1,61 @@
+{
+  "title": "ऊर्जा डैशबोर्ड",
+  "subtitle": "गाँवों के लिए वास्तविक समय निगरानी",
+
+  "currentGeneration": "वर्तमान उत्पादन",
+  "todaysCurrentGeneration": "आज का करंट उत्पादन",
+  "batteryLevel": "बैटरी स्तर",
+  "batteryStatus": "बैटरी स्थिति",
+  "temperature": "तापमान",
+  "moisture": "नमी",
+  "solarPanelsStatus": "सोलर पैनल की स्थिति",
+  "efficiency": "दक्षता",
+  "systemAlerts": "सिस्टम अलर्ट",
+  "energyComparison": "ऊर्जा तुलना",
+  "daily": "दैनिक",
+  "weekly": "साप्ताहिक",
+
+  "Battery Low": "बैटरी कम",
+  "Maintenance": "रखरखाव",
+  "Optimal": "उत्तम",
+  
+  "Battery below 20%": "बैटरी 20% से कम",
+  "Clean solar panels": "सोलर पैनल साफ करें",
+  "System performing at peak": "सिस्टम सर्वोत्तम प्रदर्शन कर रहा है",
+
+  "Solar": "सौर ऊर्जा",
+  "Battery": "बैटरी",
+  "Grid": "ग्रिड",
+
+   "Yesterday": "कल",
+  "Today": "आज",
+  "Week 1": "सप्ताह 1",
+  "Week 2": "सप्ताह 2",
+  "Week 3": "सप्ताह 3",
+  "Week 4": "सप्ताह 4",
+  "Solar": "सौर ऊर्जा",
+  "Battery": "बैटरी",
+  "Grid": "ग्रिड",
+  "daily": "दैनिक",
+  "weekly": "साप्ताहिक",
+  "energyComparison": "ऊर्जा तुलना",
+   "alerts": {
+    "title": "अलर्ट्स",
+    "lowBattery": "बैटरी स्तर कम है",
+    "lowBatteryDesc": "बैटरी का चार्ज सुरक्षित सीमा से नीचे गिर गया है। कृपया आवश्यक कार्रवाई करें।",
+    "overload": "पावर ओवरलोड का पता चला",
+    "overloadDesc": "सिस्टम में पावर ओवरलोड हो रहा है। कनेक्शनों की जांच करें और लोड कम करें।",
+    "maintenanceRequired": "रखरखाव आवश्यक",
+    "maintenanceDesc": "निर्धारित रखरखाव लंबित है। सुनिश्चित करें कि सौर पैनल और बैटरी की जाँच की गई हो।",
+    "systemHealthy": "सिस्टम सामान्य रूप से काम कर रहा है",
+    "systemHealthyDesc": "सभी सिस्टम ठीक से काम कर रहे हैं और कोई समस्या नहीं है।",
+    "batteryFull": "बैटरी पूरी तरह चार्ज है",
+    "batteryFullDesc": "बैटरी पूरी क्षमता तक चार्ज हो गई है और उपयोग के लिए तैयार है।"
+  },
+  "dashboard": "डैशबोर्ड",
+  "navbar": {
+    
+    "alerts": "अलर्ट्स",
+    "language": "भाषा"
+  }
+}

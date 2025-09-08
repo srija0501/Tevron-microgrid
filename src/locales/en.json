@@ -1,0 +1,31 @@
+{
+  "title": "Odisha Microgrid Dashboard",
+  "subtitle": "Real-time monitoring of renewable energy systems",
+  "currentGeneration": "Current Generation",
+  "batteryLevel": "Battery Level",
+  "temperature": "Temperature",
+  "moisture": "Moisture",
+  "batteryStatus": "Battery Status",
+  "todaysCurrentGeneration": "Today's Current Generation",
+  "solarPanels": "Solar Panels Status",
+  "energyComparison": "Energy Comparison",
+  "daily": "Daily",
+  "weekly": "Weekly",
+  "systemAlerts": "System Alerts",
+  "footerTitle": "Odisha Renewable Energy Initiative • Govt of Odisha",
+  "footerSubtitle": "Real-time monitoring for sustainable energy solutions",
+  "alerts": {
+    "title": "Alerts",
+    "lowBattery": "Battery Level Low",
+    "lowBatteryDesc": "The battery charge has dropped below the safe threshold. Please take necessary action.",
+    "overload": "Power Overload Detected",
+    "overloadDesc": "The system is experiencing a power overload. Check connections and reduce load.",
+    "maintenanceRequired": "Maintenance Required",
+    "maintenanceDesc": "Scheduled maintenance is pending. Ensure solar panels and batteries are inspected.",
+    "systemHealthy": "System Running Normally",
+    "systemHealthyDesc": "All systems are functioning properly with no detected issues.",
+    "batteryFull": "Battery Fully Charged",
+    "batteryFullDesc": "The battery has reached full capacity and is ready for use."
+     
+  }
+}
