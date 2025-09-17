@@ -3,6 +3,8 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, 
   ResponsiveContainer, BarChart, Bar, AreaChart, Area, PieChart, Pie, Cell
 } from "recharts";
+import { ref, onValue } from "firebase/database";
+import { db } from "../firebase"; // ✅ your firebase.js
 import { useTranslation } from "react-i18next";
 // Sample Data
 const batteryData = [
@@ -116,25 +118,49 @@ const weeklyComparisonData = [
 
 
 const Dashboard = () => {
-   const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
+
   const [currentMetrics, setCurrentMetrics] = useState({
-    battery: 72,
-    currentGen: 4.2,
-    temp: 30,
-    moisture: 40
+    battery: 0,
+    currentGen: 0,
+    temp: 0,
+    moisture: 0
   });
 
+  // ✅ Fetch real-time data from Firebase
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentMetrics(prev => ({
-        battery: Math.max(10, Math.min(100, prev.battery + (Math.random()*2 - 1))),
-        currentGen: Math.max(2, prev.currentGen + (Math.random()*0.5 - 0.25)),
-        temp: Math.max(20, Math.min(40, prev.temp + (Math.random()*1 - 0.5))),
-        moisture: Math.max(20, Math.min(60, prev.moisture + (Math.random()*2 - 1))),
-      }));
-    }, 5000);
-    return () => clearInterval(interval);
+  const nodeRef = ref(db, "nodes/NODE1/latest");
+  const unsubscribe = onValue(nodeRef, (snapshot) => {
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      setCurrentMetrics({
+        battery: data?.Battery?.Current ?? 0,
+        currentGen: data?.Solar?.Current ?? 0,
+        temp: data?.Temperature?.DHT11 ?? 0,  // ⚠️ check if Temperature really exists in DB
+        moisture: data?.Humidity ?? 0,
+      });
+    }
+  });
+  return () => unsubscribe();
+}, []);
+
+   useEffect(() => {
+    // ✅ Load Chatbot Script
+    window.chtlConfig = { chatbotId: "7751329277" };
+    const script = document.createElement("script");
+    script.src = "https://chatling.ai/js/embed.js";
+    script.async = true;
+    script.setAttribute("data-id", "7751329277");
+    script.id = "chtl-script";
+    document.body.appendChild(script);
+
+    return () => {
+      // cleanup when Dashboard unmounts
+      document.getElementById("chtl-script")?.remove();
+    };
   }, []);
+
+  
    const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
   };
@@ -198,72 +224,80 @@ const Dashboard = () => {
 
 
         {/* Metrics */}
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-  <div className="p-6 bg-white rounded-2xl shadow-md border-l-4 border-yellow-500 transition-all hover:shadow-lg">
-    <div className="flex items-center">
-      <div className="rounded-full bg-yellow-100 p-3 mr-4">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
+
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      {/* Current Generation */}
+      <div className="p-6 bg-white rounded-2xl shadow-md border-l-4 border-yellow-500 transition-all hover:shadow-lg">
+        <div className="flex items-center">
+          <div className="rounded-full bg-yellow-100 p-3 mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <div>
+            <p className="text-neutral-600 font-medium">{t("currentGeneration")}</p>
+            <p className="text-2xl font-bold text-neutral-800">
+              {currentMetrics.currentGen.toFixed(2)} kW
+            </p>
+          </div>
+        </div>
       </div>
-      <div>
-        <p className="text-neutral-600 font-medium">{t("currentGeneration")}</p>
-        <p className="text-2xl font-bold text-neutral-800">{currentMetrics.currentGen.toFixed(1)} kW</p>
+
+      {/* Battery */}
+      <div className="p-6 bg-white rounded-2xl shadow-md border-l-4 border-green-500 transition-all hover:shadow-lg">
+        <div className="flex items-center">
+          <div className="rounded-full bg-green-100 p-3 mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <div>
+            <p className="text-neutral-600 font-medium">{t("batteryLevel")}</p>
+            <p className="text-2xl font-bold text-neutral-800">{currentMetrics.battery}A</p>
+          </div>
+        </div>
+        <div className="w-full h-2 bg-neutral-100 rounded-full mt-3">
+          <div
+            className="h-2 rounded-full transition-all duration-500"
+            style={{
+              width: `${currentMetrics.battery}%`,
+              backgroundColor: getBatteryColor(currentMetrics.battery),
+            }}
+          ></div>
+        </div>
+      </div>
+
+      {/* Temperature */}
+      <div className="p-6 bg-white rounded-2xl shadow-md border-l-4 border-blue-500 transition-all hover:shadow-lg">
+        <div className="flex items-center">
+          <div className="rounded-full bg-blue-100 p-3 mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+          </div>
+          <div>
+            <p className="text-neutral-600 font-medium">{t("temperature")}</p>
+            <p className="text-2xl font-bold text-neutral-800">{currentMetrics.temp} °C</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Humidity */}
+      <div className="p-6 bg-white rounded-2xl shadow-md border-l-4 border-purple-500 transition-all hover:shadow-lg">
+        <div className="flex items-center">
+          <div className="rounded-full bg-purple-100 p-3 mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+            </svg>
+          </div>
+          <div>
+            <p className="text-neutral-600 font-medium">{t("moisture")}</p>
+            <p className="text-2xl font-bold text-neutral-800">{currentMetrics.moisture}%</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  
-  <div className="p-6 bg-white rounded-2xl shadow-md border-l-4 border-green-500 transition-all hover:shadow-lg">
-    <div className="flex items-center">
-      <div className="rounded-full bg-green-100 p-3 mr-4">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-        </svg>
-      </div>
-      <div>
-        <p className="text-neutral-600 font-medium">{t("batteryLevel")}</p>
-        <p className="text-2xl font-bold text-neutral-800">{currentMetrics.battery.toFixed(0)}%</p>
-      </div>
-    </div>
-    <div className="w-full h-2 bg-neutral-100 rounded-full mt-3">
-      <div 
-        className="h-2 rounded-full transition-all duration-500" 
-        style={{ 
-          width: `${currentMetrics.battery}%`, 
-          backgroundColor: getBatteryColor(currentMetrics.battery) 
-        }}
-      ></div>
-    </div>
-  </div>
-  
-  <div className="p-6 bg-white rounded-2xl shadow-md border-l-4 border-blue-500 transition-all hover:shadow-lg">
-    <div className="flex items-center">
-      <div className="rounded-full bg-blue-100 p-3 mr-4">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-        </svg>
-      </div>
-      <div>
-        <p className="text-neutral-600 font-medium">{t("temperature")}</p>
-        <p className="text-2xl font-bold text-neutral-800">{currentMetrics.temp.toFixed(1)} °C</p>
-      </div>
-    </div>
-  </div>
-  
-  <div className="p-6 bg-white rounded-2xl shadow-md border-l-4 border-purple-500 transition-all hover:shadow-lg">
-    <div className="flex items-center">
-      <div className="rounded-full bg-purple-100 p-3 mr-4">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-        </svg>
-      </div>
-      <div>
-        <p className="text-neutral-600 font-medium">{t("moisture")}</p>
-        <p className="text-2xl font-bold text-neutral-800">{currentMetrics.moisture.toFixed(0)}%</p>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 
         {/* Charts Grid */}
@@ -433,7 +467,7 @@ const Dashboard = () => {
       >
         <div 
           className="rounded-full p-2 mr-3 mt-0.5" 
-          style={{ backgroundColor: `${getSeverityColor(alert.severity)}20` }}
+          style={{ backgroundColor: `${getSeverityColor(alert.severity)}90` }}
         >
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
@@ -446,7 +480,7 @@ const Dashboard = () => {
               strokeLinecap="round" 
               strokeLinejoin="round" 
               strokeWidth={2} 
-              d={alert.severity === 'low' 
+              d={alert.severity === 'high' 
                 ? "M5 13l4 4L19 7" 
                 : "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
               } 
@@ -482,6 +516,7 @@ const Dashboard = () => {
           <p>Real-time monitoring for sustainable energy solutions</p>
         </footer>
       </div>
+     
     </div>
   );
 };

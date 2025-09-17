@@ -14,7 +14,7 @@ const Navbar = ({ setPage, currentPage }) => {
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>
-          <h1 className="text-lg font-bold">Solar Microgrid</h1>
+          <h1 className="text-lg font-bold">TevrON</h1>
         </div>
 
         {/* Desktop Menu */}
@@ -56,6 +56,7 @@ const Navbar = ({ setPage, currentPage }) => {
             <option value="en">EN</option>
             <option value="hi">हिंदी</option>
             <option value="or">ଓଡ଼ିଆ</option>
+             <option value="ta">தமிழ்</option>
           </select>
         </div>
 

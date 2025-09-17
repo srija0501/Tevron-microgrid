@@ -2,7 +2,7 @@
   "title": "Odisha Microgrid Dashboard",
   "subtitle": "Real-time monitoring of renewable energy systems",
   "currentGeneration": "Current Generation",
-  "batteryLevel": "Battery Level",
+  "batteryLevel": "Battery(current)",
   "temperature": "Temperature",
   "moisture": "Moisture",
   "batteryStatus": "Battery Status",

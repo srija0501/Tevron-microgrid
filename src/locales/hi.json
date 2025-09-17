@@ -4,7 +4,7 @@
 
   "currentGeneration": "वर्तमान उत्पादन",
   "todaysCurrentGeneration": "आज का करंट उत्पादन",
-  "batteryLevel": "बैटरी स्तर",
+  "batteryLevel": "बैटरी (वर्तमान)",
   "batteryStatus": "बैटरी स्थिति",
   "temperature": "तापमान",
   "moisture": "नमी",
