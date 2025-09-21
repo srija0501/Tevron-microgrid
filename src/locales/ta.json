@@ -1,4 +1,109 @@
 {
+
+    "main": {
+    "title": "டெவர்ஒன் மைக்ரோகிரிட்",
+    "subtitle": "TevrON மைக்ரோகிரிட் கட்டுப்பாடு",
+    "welcome": "உங்கள் எரிசக்தி மேலாண்மை அமைப்பில் வரவேற்கிறோம்",
+    "solarPower": "சோலார் சக்தி",
+    "solarDesc": "சோலார் பலகை செயல்திறன் மற்றும் மின்சாரம் உற்பத்தி கண்காணிக்க",
+    "windPower": "காற்றாலை சக்தி",
+    "windDesc": "காற்றாலை செயல்திறன் மற்றும் மின்சாரம் உற்பத்தியை கண்காணிக்க",
+    "viewDetails": "விவரங்களை காண்க",
+    "currentGeneration": "தற்போதைய உற்பத்தி",
+    "batteryLevel": "பேட்டரி நிலை",
+    "solarGrid": "சோலார் கிரிட்",
+    "windGrid": "காற்றாலை கிரிட்",
+    "generation": "உற்பத்தி",
+    "battery": "பேட்டரி",
+    "efficiency": "திறன்",
+    "footerTitle": "TevrON மைக்ரோகிரிட் கட்டுப்பாடு அமைப்பு",
+    "footerTag": "நிலையான எரிசக்தி தீர்வுகளுக்கான நேரடி கண்காணிப்பு",
+    "footerInitiative": "ஒடிசா புதுப்பிக்கத்தக்க எரிசக்தி முனைவு",
+    "footerGovt": "ஒடிசா அரசு"
+  },
+
+  "solar": {
+    "title": "சோலார் ஆற்றல் டாஷ்போர்டு",
+    "subtitle": "சோலார் ஆற்றல் உற்பத்தியின் நேரடி கண்காணிப்பு",
+    "currentGeneration": "தற்போதைய உற்பத்தி",
+    "batteryLevel": "பேட்டரி நிலை",
+    "temperature": "வெப்பநிலை",
+    "moisture": "ஈரப்பதம்",
+    "batteryStatus": "பேட்டரி நிலை",
+    "todaysCurrentGeneration": "இன்றைய தற்போதைய உற்பத்தி",
+    "solarPanelsStatus": "சோலார் பேனல்கள் நிலை",
+    "energyComparison": "ஆற்றல் ஒப்பீடு",
+    "daily": "நாள் தோறும்",
+    "weekly": "வாராந்திரம்",
+    "efficiency": "திறன்",
+    "systemAlerts": "அமைப்பு எச்சரிக்கைகள்",
+    "battery": "பேட்டரி",
+    "grid": "கிரிட்",
+    "solar": "சோலார்",
+    "Yesterday": "நேற்று",
+    "Today": "இன்று",
+    "Week 1": "வாரம் 1",
+    "Week 2": "வாரம் 2",
+    "Week 3": "வாரம் 3",
+    "Week 4": "வாரம் 4",
+    "Battery Low": "மின்கலம் குறைவு",
+    "Maintenance": "பராமரிப்பு",
+    "Optimal": "சிறந்தது",
+    "Battery below 20%": "மின்கலம் 20% க்கும் குறைவாக உள்ளது",
+    "Clean solar panels": "சோலார் பேனல்களை சுத்தம் செய்யவும்",
+    "System performing at peak": "அமைப்பு உச்ச செயல்பாட்டில் உள்ளது",
+    "Battery Low": "மின்கலம் குறைவு",
+    "Maintenance": "பராமரிப்பு",
+    "Optimal": "சிறந்தது",
+    "footerTitle": "TevrON சோலார் ஆற்றல் அமைப்பு",
+    "footerSubtitle": "சுத்தமான மற்றும் புதுப்பிக்கத்தக்க எரிசக்தி தீர்வுகள்"
+  },
+
+  "layout": {
+    "energyControl": "ஆற்றல் கட்டுப்பாடு",
+    "tevrONSystem": "TevrON அமைப்பு",
+    "mainDashboard": "முக்கிய டாஷ்போர்டு",
+    "solarPower": "சோலார் சக்தி",
+    "windPower": "காற்றாலை சக்தி",
+    "contactUs": "எங்களை தோடர்பு கொள்ளவும்",
+    "support": "ஆதரவு",
+    "logout": "வெளியேறு"
+  },
+
+  "wind": {
+    "title": "காற்றாலை ஆற்றல் டாஷ்போர்டு",
+    "subtitle": "காற்றாலை ஆற்றல் உற்பத்தியின் நேரடி கண்காணிப்பு",
+    "currentGeneration": "தற்போதைய உற்பத்தி",
+    "batteryLevel": "பேட்டரி நிலை",
+    "windSpeed": "காற்றின் வேகம்",
+    "windDirection": "காற்றின் திசை",
+    "turbinesStatus": "டர்பைன்கள் நிலை",
+    "efficiency": "திறன்",
+    "powerOutput": "மின் உற்பத்தி",
+    "energyComparison": "ஆற்றல் ஒப்பீடு",
+    "daily": "நாள் தோறும்",
+    "weekly": "வாராந்திரம்",
+    "systemAlerts": "அமைப்பு எச்சரிக்கைகள்",
+    "wind": "காற்று",
+    "battery": "பேட்டரி",
+    "grid": "கிரிட்",
+    "Wind": "காற்று",
+    "Battery": "பேட்டரி",
+    "Grid": "கிரிட்",
+    "Yesterday": "நேற்று",
+    "Today": "இன்று",
+    "Week 1": "வாரம் 1",
+    "Week 2": "வாரம் 2",
+    "Week 3": "வாரம் 3",
+    "Week 4": "வாரம் 4",
+    "Low Wind": "குறைந்த காற்று",
+    "Maintenance": "பராமரிப்பு",
+    "Optimal": "சிறந்தது",
+    "Wind speed below operational threshold": "காற்றின் வேகம் செயல்பாட்டு வரம்பிற்கு கீழே உள்ளது",
+    "Turbine T3 requires inspection": "டர்பைன் T3 ஆய்வு தேவை",
+    "All systems performing efficiently": "அனைத்து அமைப்புகளும் திறமையாக செயல்படுகின்றன"
+  },
+  
   "title": "ஆற்றல் டாஷ்போர்டு",
   "subtitle": "கிராமங்களுக்கு நேரடி கண்காணிப்பு",
 
@@ -57,5 +162,18 @@
   "navbar": {
     "alerts": "எச்சரிக்கைகள்",
     "language": "மொழி"
+  },
+
+   "footer": {
+    "aboutTitle": "ஒடிசா புதுமை சக்தி முயற்சி",
+    "aboutDescription": "தொடர்பான காற்று மற்றும் சூரிய சக்தி தீர்வுகளுக்கான நேரடி கண்காணிப்பு",
+    
+    "supportTitle": "ஆதரவு",
+    "supportEmailLabel": "மின்னஞ்சல்",
+    "supportEmail": "support@odishaenergy.gov",
+    "supportPhoneLabel": "தொலைபேசி",
+    "supportPhone": "+91 98765 43210",
+    
+    "copyright": "© {year} ஒடிசா புதுமை சக்தி முயற்சி • அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை"
   }
 }

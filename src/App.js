@@ -1,33 +1,48 @@
 import React, { useState } from "react";
-import DashboardPage from "./components/DashboardPage";
-import StoragePage from "./components/Storage";
-import AlertsPage from "./components/AlertsPage";
-import Navbar from "./components/Navbar";
-import LoginPage from "./components/LoginPage"; // 👈 import login page
-
+import Layout from "./components/Layout";
+import MainDashboard from "./components/MainDashboard";
+import SolarDashboard from "./components/SolarDashboard";
+import WindDashboard from "./components/WindDashboard";
+import LoginPage from "./components/LoginPage";
+import SignupPage from "./components/SignupPage";
 import "./i18n";
 
 function App() {
-  const [page, setPage] = useState("dashboard");
-  const [loggedIn, setLoggedIn] = useState(false); // 👈 track login state
+  const [currentPage, setCurrentPage] = useState("main");
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
+
+  const handleNavigate = (page) => setCurrentPage(page);
+
+  const renderCurrentPage = () => {
+    switch (currentPage) {
+      case "solar":
+        return <SolarDashboard />;
+      case "wind":
+        return <WindDashboard />;
+      default:
+        return <MainDashboard onNavigate={handleNavigate} />;
+    }
+  };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-100">
-      {/* If not logged in → show login page */}
+    <div className="min-h-screen">
       {!loggedIn ? (
-        <LoginPage onLogin={() => setLoggedIn(true)} />
+        showSignup ? (
+          <SignupPage 
+            onSignup={() => setLoggedIn(true)} 
+            onNavigateToLogin={() => setShowSignup(false)} 
+          />
+        ) : (
+          <LoginPage
+            onLogin={() => setLoggedIn(true)}
+            onNavigateToSignup={() => setShowSignup(true)}
+          />
+        )
       ) : (
-        <>
-          {/* Navbar */}
-          <Navbar setPage={setPage} />
-
-          {/* Main Content */}
-          <div className="flex-1 p-6">
-            {page === "dashboard" && <DashboardPage />}
-            {page === "alerts" && <AlertsPage />}
-            {page === "storage" && <StoragePage />}
-          </div>
-        </>
+        <Layout currentPage={currentPage} onNavigate={handleNavigate} onLogout={() => setLoggedIn(false)}>
+          {renderCurrentPage()}
+        </Layout>
       )}
     </div>
   );
