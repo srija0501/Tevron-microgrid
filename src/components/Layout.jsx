@@ -27,13 +27,19 @@ const Layout = ({ children, currentPage, onNavigate, onLogout }) => {
       nameKey: 'layout.windPower',
       icon: 'M9.59 4.59A2 2 0 1111 8H2m10.59 11.41A2 2 0 1014 16H2m15.73-8.27A2.5 2.5 0 1119.5 12H2',
       color: 'bg-gradient-to-r from-emerald-500 to-blue-600'
+    },
+     {
+      id: 'battery',
+      nameKey: 'battery.title',    // add this key to your i18n files
+      icon: 'M4 7h16a1 1 0 011 1v8a1 1 0 01-1 1H4a1 1 0 01-1-1V8a1 1 0 011-1zm16 3h1a1 1 0 010 2h-1', 
+      color: 'bg-gradient-to-r from-green-500 to-teal-600'
     }
   ];
 
   return (
     <div className="flex h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900">
       {/* Sidebar */}
-      <div className={`flex flex-col justify-between bg-gradient-to-b from-slate-800 to-slate-900 shadow-2xl transition-all duration-300 ${sidebarOpen ? 'w-72' : 'w-20'} border-r-2 border-slate-700`}>
+      <div className={`flex flex-col justify-between bg-gradient-to-b from-slate-800 to-slate-900 shadow-2xl transition-all duration-300 ${sidebarOpen ? 'w-72' : 'w-20'} border-r-2 border-gray-200`}>
         {/* Header */}
         <div>
           <div className="p-6 bg-gradient-to-r from-purple-600 to-blue-600 text-white">
@@ -91,7 +97,7 @@ const Layout = ({ children, currentPage, onNavigate, onLogout }) => {
         </div>
 
         {/* Footer */}
-        <div className={`${sidebarOpen ? 'p-4' : 'p-2'} border-t border-slate-700 space-y-3`}>
+        <div className={`${sidebarOpen ? 'p-4' : 'p-2'} border-t border-gray-200 space-y-3`}>
           {sidebarOpen && (
             <div className="space-y-2 text-slate-300 text-sm">
               <button className="w-full text-left hover:text-white transition-colors flex items-center gap-2">

@@ -111,5 +111,13 @@
     "supportPhone": "+91 98765 43210",
     
     "copyright": "© {year} Odisha Renewable Energy Initiative • All Rights Reserved"
+  },
+
+  "battery": {
+    "title": "Battery Bank",
+    "temperature": "Temperature",
+    "current": "Current",
+    "voltage": "Voltage",
+    "chargeLevel": "Charge Level"
   }
 }

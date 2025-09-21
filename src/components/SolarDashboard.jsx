@@ -134,8 +134,8 @@ const Dashboard = () => {
     if (snapshot.exists()) {
       const data = snapshot.val();
       setCurrentMetrics({
-        battery: data?.Battery?.Current ?? 0,
-        currentGen: data?.Solar?.Current ?? 0,
+        battery: data?.Battery?.Voltage ?? 0,
+        currentGen: data?.Solar?.Voltage ?? 0,
         temp: data?.Temperature?.DHT11 ?? 0,  // ⚠️ check if Temperature really exists in DB
         moisture: data?.Humidity ?? 0,
       });

@@ -5,6 +5,7 @@ import SolarDashboard from "./components/SolarDashboard";
 import WindDashboard from "./components/WindDashboard";
 import LoginPage from "./components/LoginPage";
 import SignupPage from "./components/SignupPage";
+import BatteryBank from "./components/BatteryBank";
 import "./i18n";
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
         return <SolarDashboard />;
       case "wind":
         return <WindDashboard />;
+        case "battery":
+          return <BatteryBank/>
       default:
         return <MainDashboard onNavigate={handleNavigate} />;
     }
