@@ -6,6 +6,7 @@ import {
 import { ref, onValue } from "firebase/database";
 import { db } from "../firebase"; // ✅ your firebase.js
 import { useTranslation } from "react-i18next";
+
 // Sample Data
 const batteryData = [
   { time: "6 AM", level: 80 },
@@ -128,21 +129,23 @@ const Dashboard = () => {
   });
 
   // ✅ Fetch real-time data from Firebase
-  useEffect(() => {
+ useEffect(() => {
   const nodeRef = ref(db, "nodes/NODE1/latest");
   const unsubscribe = onValue(nodeRef, (snapshot) => {
     if (snapshot.exists()) {
       const data = snapshot.val();
       setCurrentMetrics({
         battery: data?.Battery?.Voltage ?? 0,
-        currentGen: data?.Solar?.Voltage ?? 0,
-        temp: data?.Temperature?.DHT11 ?? 0,  // ⚠️ check if Temperature really exists in DB
+        currentGen: data?.Solar?.Voltage ?? 0,   // existing card
+        solarCurrent: data?.Solar?.Current ?? 0, // new field
+        temp: data?.Temperature?.DHT11 ?? 0,
         moisture: data?.Humidity ?? 0,
       });
     }
   });
   return () => unsubscribe();
 }, []);
+
 
 useEffect(() => {
   // Remove any existing botpress scripts
@@ -231,8 +234,9 @@ useEffect(() => {
 </header>
 
 
+
  {/* Metrics */}
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
   {/* Current Generation */}
   <div className="p-6 bg-white rounded-2xl shadow-md border-l-4 border-yellow-500 transition-all hover:shadow-lg">
     <div className="flex items-center">
@@ -244,12 +248,27 @@ useEffect(() => {
       <div>
         <p className="text-neutral-600 font-medium">{t("solar.currentGeneration")}</p>
         <p className="text-2xl font-bold text-neutral-800">
-          {currentMetrics.currentGen.toFixed(2)} kW
+          {currentMetrics.currentGen.toFixed(2)} V
         </p>
       </div>
     </div>
   </div>
 
+<div className="p-6 bg-white rounded-2xl shadow-md border-l-4 border-orange-500 transition-all hover:shadow-lg">
+  <div className="flex items-center">
+    <div className="rounded-full bg-orange-100 p-3 mr-4">
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v10m0 0l-3-3m3 3l3-3m-3 3v8" />
+      </svg>
+    </div>
+    <div>
+      <p className="text-neutral-600 font-medium">{t("solar.solarCurrent")}</p>
+      <p className="text-2xl font-bold text-neutral-800">
+        {currentMetrics.solarCurrent} A
+      </p>
+    </div>
+  </div>
+</div>
   {/* Battery */}
   <div className="p-6 bg-white rounded-2xl shadow-md border-l-4 border-green-500 transition-all hover:shadow-lg">
     <div className="flex items-center">
@@ -273,6 +292,7 @@ useEffect(() => {
       ></div>
     </div>
   </div>
+  
 
   {/* Temperature */}
   <div className="p-6 bg-white rounded-2xl shadow-md border-l-4 border-blue-500 transition-all hover:shadow-lg">

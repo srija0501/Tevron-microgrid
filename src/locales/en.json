@@ -24,6 +24,7 @@
     "subtitle": "Real-time Solar Power Monitoring",
     "currentGeneration": "Current Generation",
     "batteryLevel": "Battery Level",
+     "solarCurrent": "Solar Current",
     "temperature": "Temperature",
     "moisture": "Humidity",
     "batteryStatus": "Battery Status",
@@ -114,10 +115,15 @@
   },
 
   "battery": {
-    "title": "Battery Bank",
+    "title": "Power house",
     "temperature": "Temperature",
     "current": "Current",
     "voltage": "Voltage",
     "chargeLevel": "Charge Level"
-  }
+  },
+  "siteMap": {
+  "title": "Renewable Energy Site Locations",
+  "solarSites": "Solar Sites",
+  "windSites": "Wind Sites"
+}
 }

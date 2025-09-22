@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import SiteMap from "./SiteMap";
 
 const MainDashboard = ({ onNavigate }) => {
   const { t, i18n } = useTranslation();
@@ -51,6 +52,10 @@ const MainDashboard = ({ onNavigate }) => {
             </select>
           </div>
         </header>
+
+         <div className="mb-8">
+          <SiteMap />
+        </div>
 
         {/* Solar Card */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
