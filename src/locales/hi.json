@@ -107,6 +107,13 @@
     
     "copyright": "© {year} ओडिशा नवीकरणीय ऊर्जा पहल • सर्वाधिकार सुरक्षित"
   },
+  "battery": {
+  "title": "पावर हाउस",
+  "temperature": "तापमान",
+  "current": "धारा",
+  "voltage": "वोल्टेज",
+  "chargeLevel": "चार्ज स्तर"
+},
   "siteMap": {
   "title": "नवीकरणीय ऊर्जा स्थल स्थान",
   "solarSites": "सौर स्थल",

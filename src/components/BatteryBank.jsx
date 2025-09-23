@@ -22,7 +22,7 @@ const BatteryBank = () => {
   return (
     <div className="p-6 min-h-screen bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900">
       <h1 className="text-3xl font-bold text-white mb-6">
-        {t("batteryBank.title", "Battery Bank")}
+        {t("battery.title", "Battery Bank")}
       </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -42,15 +42,15 @@ const BatteryBank = () => {
 
             <ul className="space-y-2 text-gray-700 text-sm">
               <li className="flex justify-between">
-                <span className="font-medium">{t("batteryBank.temperature", "Temperature")}:</span>
+                <span className="font-medium">{t("battery.temperature")}:</span>
                 <span>{battery.temperature} °C</span>
               </li>
               <li className="flex justify-between">
-                <span className="font-medium">{t("batteryBank.current", "Current")}:</span>
+                <span className="font-medium">{t("battery.current")}:</span>
                 <span>{battery.current} A</span>
               </li>
               <li className="flex justify-between">
-                <span className="font-medium">{t("batteryBank.voltage", "Voltage")}:</span>
+                <span className="font-medium">{t("battery.voltage")}:</span>
                 <span>{battery.voltage} V</span>
               </li>
              
