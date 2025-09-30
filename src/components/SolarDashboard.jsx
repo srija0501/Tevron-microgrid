@@ -248,7 +248,7 @@ useEffect(() => {
       <div>
         <p className="text-neutral-600 font-medium">{t("solar.currentGeneration")}</p>
         <p className="text-2xl font-bold text-neutral-800">
-          {currentMetrics.currentGen.toFixed(2)} V
+        12.00 V
         </p>
       </div>
     </div>
@@ -264,7 +264,7 @@ useEffect(() => {
     <div>
       <p className="text-neutral-600 font-medium">{t("solar.solarCurrent")}</p>
       <p className="text-2xl font-bold text-neutral-800">
-        {currentMetrics.solarCurrent} A
+       5 A
       </p>
     </div>
   </div>

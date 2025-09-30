@@ -33,7 +33,13 @@ const Layout = ({ children, currentPage, onNavigate, onLogout }) => {
       nameKey: 'battery.title',    // add this key to your i18n files
       icon: 'M4 7h16a1 1 0 011 1v8a1 1 0 01-1 1H4a1 1 0 01-1-1V8a1 1 0 011-1zm16 3h1a1 1 0 010 2h-1', 
       color: 'bg-gradient-to-r from-green-500 to-teal-600'
-    }
+    },
+    {
+  id: 'addCredits',
+  nameKey: 'credits.title',
+  icon: 'M2 7a2 2 0 012-2h16a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V7zm0 4h20', // <-- Updated credit card icon
+  color: 'bg-gradient-to-r from-indigo-500 to-purple-600'
+}
   ];
 
   return (

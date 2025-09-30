@@ -6,6 +6,7 @@ import WindDashboard from "./components/WindDashboard";
 import LoginPage from "./components/LoginPage";
 import SignupPage from "./components/SignupPage";
 import BatteryBank from "./components/BatteryBank";
+import AddCredits from "./components/AddCredits";
 import "./i18n";
 
 function App() {
@@ -21,8 +22,10 @@ function App() {
         return <SolarDashboard />;
       case "wind":
         return <WindDashboard />;
-        case "battery":
-          return <BatteryBank/>
+      case "battery":
+        return <BatteryBank />;
+      case "addCredits":
+        return <AddCredits />;
       default:
         return <MainDashboard onNavigate={handleNavigate} />;
     }
@@ -32,9 +35,9 @@ function App() {
     <div className="min-h-screen">
       {!loggedIn ? (
         showSignup ? (
-          <SignupPage 
-            onSignup={() => setLoggedIn(true)} 
-            onNavigateToLogin={() => setShowSignup(false)} 
+          <SignupPage
+            onSignup={() => setLoggedIn(true)}
+            onNavigateToLogin={() => setShowSignup(false)}
           />
         ) : (
           <LoginPage
@@ -43,7 +46,11 @@ function App() {
           />
         )
       ) : (
-        <Layout currentPage={currentPage} onNavigate={handleNavigate} onLogout={() => setLoggedIn(false)}>
+        <Layout
+          currentPage={currentPage}
+          onNavigate={handleNavigate}
+          onLogout={() => setLoggedIn(false)}
+        >
           {renderCurrentPage()}
         </Layout>
       )}

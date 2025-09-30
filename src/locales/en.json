@@ -22,7 +22,7 @@
   "solar": {
     "title": "Solar Energy Dashboard",
     "subtitle": "Real-time Solar Power Monitoring",
-    "currentGeneration": "Current Generation",
+    "currentGeneration": "Voltage Generated",
     "batteryLevel": "Battery Level",
      "solarCurrent": "Solar Current",
     "temperature": "Temperature",
@@ -125,5 +125,18 @@
   "title": "Renewable Energy Site Locations",
   "solarSites": "Solar Sites",
   "windSites": "Wind Sites"
-}
+},
+
+  "credits": {
+    "title": "Credits",
+    "subtitle": "Manage your renewable energy credits",
+    "description": "Add credits to your TevrON account to support clean and renewable energy solutions.",
+    "currentBalance": "Current Balance",
+    "addCreditsButton": "Add Credits",
+    "enterAmount": "Enter Amount",
+    "successMessage": "Credits added successfully!",
+    "errorMessage": "There was a problem adding credits. Please try again."
+  }
+
+
 }
